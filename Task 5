@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void *custom_calloc(size_t num,size_t size){
+		void *ptr = malloc(num *size);
+		if(ptr == NULL){
+					return NULL;
+		}
+		memset(ptr,0,num * size);
+		return ptr;
+}
+int main(){
+		int *arr;
+		size_t n , i;
+		printf("Enter size of array");
+		scanf("%zu",&n);
+		arr =(int *)custom_calloc(n,sizeof(int));
+		if(arr == NULL){
+				printf("No spasce");
+				return 1;				
+		}
+		printf("Size of array");
+		for(int i = 0; i < n ; i++){
+				printf("%d ",arr[i]);
+		}
+		printf("\n");
+		free(arr);
+		return 0;
+
+		}
